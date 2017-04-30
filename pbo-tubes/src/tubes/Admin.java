@@ -7,7 +7,7 @@ package tubes;
 
 /**
  *
- * @author User
+ * @author doki
  */
 public class Admin {
     private String user;

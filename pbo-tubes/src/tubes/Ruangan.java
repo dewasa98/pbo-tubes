@@ -12,28 +12,28 @@ package tubes;
 public class Ruangan {
     private String nomor;
     private int kapasitas;
-    private int ndok;
+    private int jumlahDokter;
     private Dokter dokter;
     private Ruangan[] ruang;
 
-    public Ruangan(String nama, int kapasitas){
+    public Ruangan(String nomor, int kapasitas){
         this.nomor = nomor;
         this.ruang = new Ruangan[kapasitas];
+        this.jumlahDokter = 0;
     }
     
     public Dokter getDokter(int i){
         return ruang[i].dokter;
     }
-    
-    public Pasien getPasien(int i){
-        Pasien entry = new Pasien(ruang[i].dokter.getDaftarPeriksa(i).getNamaPasien());
-        return entry;
+    //method getPasien masih salah.
+    public String getPasien(int i){
+        return ruang[i].dokter.getNama();
     }
     
     public void addDokter(String nomor, Dokter d){
-        if(this.ndok < ruang.length){
-            ruang[ndok].dokter = d;
-            ndok++;
+        if(this.jumlahDokter < ruang.length){
+            ruang[jumlahDokter].dokter = d;
+            jumlahDokter++;
         }
     }
 }

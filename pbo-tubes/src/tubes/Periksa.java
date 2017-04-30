@@ -10,14 +10,15 @@ package tubes;
  * @author User
  */
 public class Periksa {
-    private String namaPasien;
+
     private String namaDokter;
+    private String namaPasien;
     private String tanggalPeriksa;
     private String indikasi;
     private String rekomendasi;
-    private double bayarPeriksa;
+    //private double bayarPeriksa;
 
-    public Periksa(Dokter dok, Pasien pas, String tanggalPeriksa, String indikasi, String rekomendasi){
+    public Periksa(Dokter dok, Pasien pas, String tanggalPeriksa, String indikasi, String rekomendasi) {
         this.namaDokter = dok.getNama();
         this.namaPasien = pas.getNama();
         this.tanggalPeriksa = tanggalPeriksa;
@@ -25,12 +26,13 @@ public class Periksa {
         this.rekomendasi = rekomendasi;
     }
 
-    public String getNamaPasien() {
-        return namaPasien;
-    }
 
     public String getNamaDokter() {
         return namaDokter;
+    }
+    
+    public String getNamaPasien() {
+        return namaPasien;
     }
 
     public String getTanggalPeriksa() {
@@ -44,7 +46,5 @@ public class Periksa {
     public String getRekomendasi() {
         return rekomendasi;
     }
-    
-    
-    
+
 }

@@ -11,8 +11,8 @@ package tubes;
  */
 public class Pasien {
     private String nama;
-    private Periksa[] riwayatPemeriksaan;
-    private int jumlahPemeriksaan;
+    private Periksa[] riwayatPeriksa;
+    private int jumlahPeriksa;
 
     public Pasien(String nama) {
         this.nama = nama;
@@ -23,25 +23,32 @@ public class Pasien {
     }
 
     public String getRekomendasiTerakhir() {
-        return riwayatPemeriksaan[jumlahPemeriksaan].getRekomendasi();
+        return this.riwayatPeriksa[this.jumlahPeriksa-1].getRekomendasi();
     }
 
     public String getIndikasiTerakhir() {
-        return riwayatPemeriksaan[jumlahPemeriksaan].getIndikasi();
+        return this.riwayatPeriksa[this.jumlahPeriksa-1].getIndikasi();
+    }
+    
+    public String getTanggalTerakhirPeriksa() {
+        if (this.jumlahPeriksa > 0)
+            return this.riwayatPeriksa[this.jumlahPeriksa-1].getTanggalPeriksa();
+        else
+            return "Pasien belum pernah diperiksa.";
     }
     
     public int getJumlahPeriksa(){
-        return jumlahPemeriksaan;
+        return jumlahPeriksa;
     }
     
     public Periksa getPeriksa(int i){
-        return riwayatPemeriksaan[i];
+        return riwayatPeriksa[i];
     }
     
     public void addPeriksa(String tanggalPeriksa, String indikasi, Dokter dokter, String rekomendasi){
         Periksa entry = new Periksa(dokter, this, tanggalPeriksa, indikasi, rekomendasi);
-        this.riwayatPemeriksaan[jumlahPemeriksaan] = entry;
-        this.jumlahPemeriksaan++;
+        this.riwayatPeriksa[jumlahPeriksa] = entry;
+        this.jumlahPeriksa++;
     }
     
     

@@ -12,16 +12,24 @@ package tubes;
 public class Dokter {
     private String nama;
     private Pasien[] daftarPasien;
-    private int jumlahPemeriksaan;
-    private Periksa[] daftarPemeriksaan;
+    private int jumlahPasien;
+    private Periksa[] daftarPeriksa;
+    private int jumlahPeriksa;
 
     public Dokter(String nama, int maxJumlahPasien) {
         this.nama = nama;
-        this.daftarPemeriksaan = new Periksa[maxJumlahPasien];
+        this.daftarPasien = new Pasien[maxJumlahPasien];
+        this.jumlahPasien = 0;
+        this.daftarPeriksa = new Periksa[maxJumlahPasien*5];
+        this.jumlahPeriksa = 0;
     }
-
+    
     public Dokter(String nama) {
         this.nama = nama;
+        this.daftarPasien = new Pasien[25];
+        this.jumlahPasien = 0;
+        this.daftarPeriksa = new Periksa[125];
+        this.jumlahPeriksa = 0;
     }
 
     public String getNama() {
@@ -29,19 +37,19 @@ public class Dokter {
     }
 
     public int getJumlahPasien() {
-        return jumlahPemeriksaan;
+        return jumlahPasien;
     }
     
-    public void tambahPeriksa(Pasien pas, String tglPeriksa, String indikasi, String rekomendasi){
-        if(jumlahPemeriksaan < daftarPemeriksaan.length){
-            Periksa entry = new Periksa(this, daftarPasien[jumlahPemeriksaan], tglPeriksa, indikasi, rekomendasi);
-            daftarPemeriksaan[jumlahPemeriksaan] = entry;
-            jumlahPemeriksaan++;
+    public void addPeriksa(Pasien pas, String tglPeriksa, String indikasi, String rekomendasi){
+        if(jumlahPeriksa < daftarPeriksa.length){
+            Periksa entry = new Periksa(this, daftarPasien[jumlahPeriksa], tglPeriksa, indikasi, rekomendasi);
+            daftarPeriksa[jumlahPeriksa] = entry;
+            jumlahPeriksa++;
         }
     }
     
     public Periksa getDaftarPeriksa(int i){
-        return daftarPemeriksaan[i];
+        return daftarPeriksa[i];
     }
     
 }
